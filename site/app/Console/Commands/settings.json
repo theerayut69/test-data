@@ -1,0 +1,84 @@
+{
+    "settings": {
+        "analysis": {
+            "filter": {
+                "thai_stop": {
+                    "type": "stop",
+                    "stopwords": "_thai_"
+                },
+                "word_delimiter_index_filter": {
+                    "type": "word_delimiter",
+                    "generate_word_parts": true,
+                    "generate_number_parts": true,
+                    "catenate_words": false,
+                    "catenate_numbers": false,
+                    "catenate_all": true,
+                    "split_on_case_change": true
+                },
+                "word_delimiter_search_filter": {
+                    "type": "word_delimiter",
+                    "generate_word_parts": false,
+                    "generate_number_parts": false,
+                    "catenate_words": false,
+                    "catenate_numbers": false,
+                    "catenate_all": false,
+                    "split_on_case_change": false
+                },
+                "shingle_filter": {
+                    "type": "shingle",
+                    "min_shingle_size": 2,
+                    "max_shingle_size": 2,
+                    "output_unigrams": true,
+                    "output_unigrams_if_no_shingles": false,
+                    "token_separator": ""
+                },
+                "shorten_filter": {
+                    "type": "pattern_replace",
+                    "pattern": "^(.{20})(.*)?",
+                    "replacement": "$1",
+                    "replace": "all"
+                },
+                "edge_ngram_filter": {
+                    "type": "edgeNGram",
+                    "min_gram": 2,
+                    "max_gram": 16,
+                    "side": "front"
+                }
+            },
+            "analyzer": {
+                "thai_generic_index_analyzer": {
+                    "tokenizer": "thai",
+                    "filter": [
+                        "lowercase",
+                        "thai_stop",
+                        "word_delimiter_index_filter",
+                        "edge_ngram_filter",
+                        "shingle_filter",
+                        "unique"
+                    ]
+                },
+                "thai_generic_search_analyzer": {
+                    "tokenizer": "thai",
+                    "filter": [
+                        "lowercase",
+                        "thai_stop",
+                        "word_delimiter_search_filter",
+                        "shingle_filter",
+                        "unique",
+                        "shorten_filter"
+                    ]
+                },
+                "thai_related_analyzer": {
+                    "tokenizer": "thai",
+                    "filter": [
+                        "lowercase",
+                        "thai_stop",
+                        "word_delimiter_search_filter",
+                        "unique",
+                        "shorten_filter"
+                    ]
+                }
+            }
+        }
+    }
+}

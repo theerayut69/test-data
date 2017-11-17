@@ -1,0 +1,69 @@
+{
+   "search": {
+       "properties": {
+            "section": {
+               "type": "keyword"
+            },
+            "title": {
+                "type": "text",
+                "analyzer": "thai_generic_index_analyzer",
+                "search_analyzer": "thai_generic_search_analyzer"
+            },
+            "excerpt": {
+                "type": "text",
+                "analyzer": "thai_generic_index_analyzer",
+                "search_analyzer": "thai_generic_search_analyzer"
+            },
+            "content_plain": {
+                "type": "text",
+                "analyzer": "thai_generic_index_analyzer",
+                "search_analyzer": "thai_generic_search_analyzer"
+            },
+            "content_html": {
+                "type": "text",
+                "analyzer": "thai_generic_index_analyzer",
+                "search_analyzer": "thai_generic_search_analyzer"
+            },
+            "permalink": {
+                "type": "text"
+            },
+            "categories": {
+                "type": "text",
+                "analyzer": "thai_generic_index_analyzer",
+                "search_analyzer": "thai_generic_search_analyzer"
+            },
+            "tags": {
+                "type": "text"
+            },
+            "author": {
+                "type": "text",
+                "analyzer": "thai_generic_index_analyzer",
+                "search_analyzer": "thai_generic_search_analyzer"
+            },
+            "bigthumb": {
+                "type": "text"
+            },
+            "thumb": {
+                "type": "text"
+            },
+            "created": {
+                "type": "date",
+                "include_in_all": false,
+                "format": "yyyy-MM-dd HH:mm:ss"
+            },
+            "allcontent":{
+                "type": "text",
+                "analyzer": "thai_generic_index_analyzer",
+                "term_vector": "yes"
+            },
+            "modified": {  
+                "type": "date",
+                "include_in_all": false,
+                "format": "yyyy-MM-dd HH:mm:ss"
+            },
+            "post_type": {
+                "type": "text"
+            }
+        }
+    }
+}

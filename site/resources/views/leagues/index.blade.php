@@ -4,28 +4,30 @@
 
 @section('content')
 <div class="container">
-  <div class="row" style="margin-top: 100px;">
+  <div class="row" style="margin-top: 50px;">
     <div class="col-sm">
-    <a href="{{ route('league-form') }}">test</a>
+    @if(session()->has('message'))
+      <div class="alert alert-success">
+          {{ session()->get('message') }}
+      </div>
+    @endif
+    <a href="{{ route('league-form') }}" class="btn btn-primary">Add League</a>
       <table class="table table-dark">
         <thead>
           <tr>
-            <!-- <th scope="col">#</th> -->
-            <th scope="col">First Name</th>
+            <th scope="col">League Name</th>
             <th scope="col">Description</th>
-            <!-- <th scope="col">Username</th> -->
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
         @foreach($leagues as $league)
-          <tr>
+          <tr id="tr_{{$league->id}}">
             <td>{{ $league->name }}</td>
             <td>{{ $league->description }}</td>
             <td>
-            {{ Form::open(array('url' => 'leagues/' . $value->id, 'class' => 'pull-right')) }}
-              {{ Form::hidden('_method', 'DELETE') }}
-              {{ Form::submit('Delete this League', array('class' => 'btn btn-warning')) }}
-            {{ Form::close() }}
+                <a class="btn btn-info" href="{{ route('league-edit', $league->id) }}">Update</a>
+                <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('league-delete', $league->id)}}">Delete</a>
             </td>
           </tr>
         @endforeach

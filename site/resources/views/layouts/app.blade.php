@@ -14,6 +14,7 @@
 
     <!-- Styles -->
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/aspire/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>

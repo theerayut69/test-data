@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Leagues;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use DB;
 
 class LeaguesController extends Controller
 {
@@ -33,8 +34,10 @@ class LeaguesController extends Controller
             'description' => $description,
         ]);
 
-        $leagues = Leagues::all();
-        return view('leagues.index',['leagues' => $leagues]);
+        return redirect('leagues')->with('message', 'Create Success!');
+
+        // $leagues = Leagues::all();
+        // return view('leagues.index',['leagues' => $leagues]);
 
     }
 
@@ -75,6 +78,12 @@ class LeaguesController extends Controller
     public function edit($id)
     {
         //
+        // echo $id; exit;
+        $league = Leagues::where('id', $id)->first();
+
+        // echo "<pre>"; print_r($league);exit;
+
+        return view('leagues.edit', compact('league', 'id'));
     }
 
     /**
@@ -87,6 +96,16 @@ class LeaguesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        // echo "555"; exit;
+        $leagues = Leagues::find($id);
+        // $this->validate(request(), [
+        //   'name' => 'required',
+        //   'description' => 'required|numeric'
+        // ]);
+        $leagues->name = $request->input('name');
+        $leagues->description = $request->input('description');
+        $leagues->save();
+        return redirect('leagues')->with('success','League has been updated');
     }
 
     /**
@@ -99,8 +118,6 @@ class LeaguesController extends Controller
     {
         $league = Leagues::find($id);
         $league->delete();
-
-        $leagues = Leagues::all();
-        return view('leagues.index',['leagues' => $leagues]);
+        return redirect('leagues')->with('message','League deleted successfully');
     }
 }

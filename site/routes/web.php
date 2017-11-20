@@ -23,5 +23,12 @@ Route::post('leagues/create', 'LeaguesController@create')->name('league-create')
 
 Route::get('leagues/create', 'LeaguesController@createForm')->name('league-form');
 
-Route::delete('/leagues/{id}', 'LeaguesController@destroy');
+// Route::delete('/leagues/{id}', 'LeaguesController@destroy');
+Route::get('/leagues/{id}', 'LeaguesController@destroy')->name('league-delete');
 
+// Route::get('leagues/{id}/delete', 'LeaguesController@delete');
+
+Route::get('leagues/update/{id}', 'LeaguesController@edit')->name('league-edit');
+
+Route::PATCH('/leagues/update/{id}', 'LeaguesController@update')->name('league-update');
+// Route::post('leagues/update/{id}', 'LeaguesController@edit')->name('league-update');

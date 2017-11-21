@@ -34,7 +34,7 @@
             </td>
             <td>{{ $team->name }}</td>
             <td>{{ $team->description }}</td>
-            <td>{{ $team->league_id }}</td>
+            <td>{{ $team->leagues->name }}</td>
             <td>
                 <a class="btn btn-info" href="team/edit/{{ $team->id }}">Update</a>
                 <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{action('TeamController@destroy', $team->id)}}">Delete</a>

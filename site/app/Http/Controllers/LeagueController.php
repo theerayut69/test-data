@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Leagues;
+use App\League;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use DB;
 
-class LeaguesController extends Controller
+class LeagueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class LeaguesController extends Controller
      */
     public function index()
     {
-        $leagues = Leagues::all();
+        $leagues = League::all();
         return view('leagues.index',['leagues' => $leagues]);
     }
 
@@ -27,17 +27,12 @@ class LeaguesController extends Controller
      */
     public function create(Request $request)
     {
-        $name = $request->input('name');
-        $description = $request->input('description');
-        Leagues::create([
-            'name' => $name,
-            'description' => $description,
-        ]);
+        $leagues = new League;
+        $leagues->name = $request->input('name');
+        $leagues->description = $request->input('description');
+        $leagues->save();
 
-        return redirect('leagues')->with('message', 'Create Success!');
-
-        // $leagues = Leagues::all();
-        // return view('leagues.index',['leagues' => $leagues]);
+        return redirect('leagues')->witleague_idh('message', 'Create Success!');
 
     }
 
@@ -79,7 +74,7 @@ class LeaguesController extends Controller
     {
         //
         // echo $id; exit;
-        $league = Leagues::where('id', $id)->first();
+        $league = League::where('id', $id)->first();
 
         // echo "<pre>"; print_r($league);exit;
 
@@ -97,7 +92,7 @@ class LeaguesController extends Controller
     {
         //
         // echo "555"; exit;
-        $leagues = Leagues::find($id);
+        $leagues = League::find($id);
         // $this->validate(request(), [
         //   'name' => 'required',
         //   'description' => 'required|numeric'
@@ -116,7 +111,7 @@ class LeaguesController extends Controller
      */
     public function destroy($id)
     {
-        $league = Leagues::find($id);
+        $league = League::find($id);
         $league->delete();
         return redirect('leagues')->with('message','League deleted successfully');
     }

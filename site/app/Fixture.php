@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Fixtures extends Model
+class Fixture extends Model
 {
     protected $fillable = [
         'league_id',
@@ -13,6 +13,11 @@ class Fixtures extends Model
     ];
 
     public function leagues(){
-        return $this->belongsTo('App\Models\Leagues');
+        return $this->belongsTo('App\League');
+    }
+
+    public function teams()
+    {
+        return $this->belongsToMany('App\Team');
     }
 }

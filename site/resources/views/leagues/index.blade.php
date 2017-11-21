@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.aspire')
 
 @section('title', 'Leagues')
 
 @section('content')
 <div class="container">
-  <div class="row" style="margin-top: 50px;">
+  <div class="row">
     <div class="col-sm">
     @if(session()->has('message'))
       <div class="alert alert-success">
@@ -12,7 +12,7 @@
       </div>
     @endif
     <a href="{{ route('league-form') }}" class="btn btn-primary">Add League</a>
-      <table class="table table-dark">
+      <table class="table table-striped table-bordered">
         <thead>
           <tr>
             <th scope="col">League Name</th>

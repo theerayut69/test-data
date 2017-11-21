@@ -12,23 +12,26 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
 
-Route::get('leagues', 'LeaguesController@index');
+Route::get('league', 'LeagueController@index');
+Route::get('league/create', 'LeagueController@createForm')->name('league-form');
+Route::post('league/create', 'LeagueController@create')->name('league-create');
+Route::get('/league/{id}', 'LeagueController@destroy')->name('league-delete');
+Route::get('league/update/{id}', 'LeagueController@edit')->name('league-edit');
+Route::PATCH('/league/update/{id}', 'LeagueController@update')->name('league-update');
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('team', 'TeamController@index');
+Route::get('team/form', 'TeamController@createForm');
+Route::post('team/create', 'TeamController@create');
+Route::get('team/edit/{id}', 'TeamController@edit');
+Route::get('team/delete/{id}', 'TeamController@destroy');
+Route::patch('team/update/{id}', 'TeamController@update')->name('team-update');
 
-Route::post('leagues/create', 'LeaguesController@create')->name('league-create');
-
-Route::get('leagues/create', 'LeaguesController@createForm')->name('league-form');
-
-// Route::delete('/leagues/{id}', 'LeaguesController@destroy');
-Route::get('/leagues/{id}', 'LeaguesController@destroy')->name('league-delete');
-
-// Route::get('leagues/{id}/delete', 'LeaguesController@delete');
-
-Route::get('leagues/update/{id}', 'LeaguesController@edit')->name('league-edit');
-
-Route::PATCH('/leagues/update/{id}', 'LeaguesController@update')->name('league-update');
-// Route::post('leagues/update/{id}', 'LeaguesController@edit')->name('league-update');
+Route::get('player', 'PlayerController@index');
+Route::get('player/form', 'PlayerController@createForm');
+Route::post('player/create', 'PlayerController@create');
+Route::get('player/edit/{id}', 'PlayerController@edit');
+Route::get('player/delete/{id}', 'PlayerController@destroy');
+Route::patch('player/update/{id}', 'PlayerController@update')->name('player-update');

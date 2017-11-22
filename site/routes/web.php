@@ -39,6 +39,15 @@ Route::get('player/edit/{id}', 'PlayerController@edit');
 Route::get('player/delete/{id}', 'PlayerController@destroy');
 Route::patch('player/update/{id}', 'PlayerController@update')->name('player-update');
 
+Route::get('fixture', 'FixtureController@index');
+Route::get('fixture/form', 'FixtureController@createForm');
+Route::post('fixture/create', 'FixtureController@create');
+Route::get('fixture/edit/{id}', 'FixtureController@edit');
+Route::get('fixture/delete/{id}', 'FixtureController@destroy');
+Route::patch('fixture/update/{id}', 'FixtureController@update');
+
+
+
 Route::get('/ajax-team', function(){
     $league_id = Input::get('league_id');
     $teams = Team::select('id','name')->where('league_id', '=', $league_id)->get();

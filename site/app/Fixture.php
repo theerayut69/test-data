@@ -10,6 +10,7 @@ class Fixture extends Model
         'league_id',
         'home_team',
         'away_team',
+        'play_date',
     ];
 
     public function leagues(){
@@ -18,6 +19,6 @@ class Fixture extends Model
 
     public function teams()
     {
-        return $this->belongsToMany('App\Team');
+        return $this->belongsToMany('App\Team', 'home_team', 'away_team');
     }
 }

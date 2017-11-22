@@ -28,15 +28,18 @@
     <link rel="stylesheet" href="http://themenate.com/espire/html/bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="http://themenate.com/espire/html/bower_components/PACE/themes/blue/pace-theme-minimal.css" />
     <link rel="stylesheet" href="http://themenate.com/espire/html/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css" />
+    <link rel="stylesheet" href="http://themenate.com/espire/html/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" />
+    <link href="{{ asset('/css/aspire/font-awesome.min.css') }}" rel="stylesheet">
+    {{--  <link href="https://raw.githubusercontent.com/wgbbiao/bootstrap4-datetimepicker/master/build/css/bootstrap-datetimepicker.css" rel="stylesheet">  --}}
 
     <!-- page plugins css -->
     <link rel="stylesheet" href="http://themenate.com/espire/html/bower_components/bower-jvectormap/jquery-jvectormap-1.2.2.css" />
     <link rel="stylesheet" href="http://themenate.com/espire/html/bower_components/nvd3/build/nv.d3.min.css" />
 
     <!-- core css -->
+    <link href="{{ asset('/css/aspire/bootstrap-datetimepicker.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/aspire/ei-icon.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/aspire/themify-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/aspire/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/aspire/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/aspire/app.css') }}" rel="stylesheet">
 </head>
@@ -166,11 +169,14 @@
     <script src="http://themenate.com/espire/html/bower_components/nvd3/build/nv.d3.min.js"></script>
     <script src="http://themenate.com/espire/html/bower_components/jquery.sparkline/index.js"></script>
     <script src="http://themenate.com/espire/html/bower_components/chart.js/dist/Chart.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script src="http://themenate.com/espire/html/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
 
     <script src="{{ asset('/js/aspire/app.min.js') }}"></script>
 
     <!-- page js -->
     <script src="{{ asset('/js/aspire/dashboard/dashboard.js') }}"></script>
+    <script src="{{ asset('/js/aspire/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ asset('/js/page.js') }}"></script>
 
 </body>

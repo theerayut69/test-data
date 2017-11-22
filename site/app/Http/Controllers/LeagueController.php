@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\League;
 use Illuminate\Http\Request;
-use DB;
 
 class LeagueController extends Controller
 {

@@ -10,11 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Input;
+use App\Team;
 
-Route::get('/', function () {
-    return view('main');
-});
+// Route::get('/', function () {
+//     return view('main');
+// });
 
+Route::get('/', 'LeagueController@index');
 Route::get('league', 'LeagueController@index');
 Route::get('league/create', 'LeagueController@createForm')->name('league-form');
 Route::post('league/create', 'LeagueController@create')->name('league-create');
@@ -35,3 +38,24 @@ Route::post('player/create', 'PlayerController@create');
 Route::get('player/edit/{id}', 'PlayerController@edit');
 Route::get('player/delete/{id}', 'PlayerController@destroy');
 Route::patch('player/update/{id}', 'PlayerController@update')->name('player-update');
+
+Route::get('/ajax-team', function(){
+    $league_id = Input::get('league_id');
+    $teams = Team::select('id','name')->where('league_id', '=', $league_id)->get();
+    // dd($teams);
+    return Response::json($teams);
+});
+
+Route::any( '/team/search', function () {
+    $q = Input::get ( 'q' );
+    if($q != ""){
+        $teams = Team::where('name', 'LIKE', '%' . $q . '%')->orWhere('description', 'LIKE', '%' . $q . '%')->paginate(5)->setPath('');
+        $pagination = $teams->appends (array(
+            'q' => Input::get ('q') 
+        ));
+        if (count ( $teams ) > 0){
+            return view ('team.index', compact('teams', 'q'))->withQuery($q);
+        }
+    }
+    return redirect('team')->withMessage('No Details found. Try to search again !');
+});

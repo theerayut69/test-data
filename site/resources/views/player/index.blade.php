@@ -11,7 +11,7 @@
           {{ session()->get('message') }}
       </div>
     @endif
-    <a href="player/form" class="btn btn-primary">Add Player</a>
+    <a href="player/form" class="btn btn-default">Add Player</a>
       <table class="table table-striped table-bordered">
         <thead>
           <tr>

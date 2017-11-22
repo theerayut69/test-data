@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Player;
+use App\League;
 use App\Team;
 
 class PlayerController extends Controller
@@ -26,6 +27,10 @@ class PlayerController extends Controller
      */
     public function create(Request $request)
     {
+        $this->validate(request(), [
+            'name' => 'required',
+            // 'team_id' => 'required',
+        ]);
         $player = new Player;
         $player->team_id = $request->input('team_id');
         $player->name = $request->input('name');
@@ -38,8 +43,11 @@ class PlayerController extends Controller
 
     public function createForm()
     {
-        $teams = Team::select('id','name')->get();
-        return view('player.create', compact('teams'));
+        $leagues = League::select('id', 'name')->get();
+        // dd($leagues->first()->id);
+        $teams = Team::where('league_id', '=', $leagues->first()->id)->get();
+        // dd($teams);
+        return view('player.create', compact('teams', 'leagues'));
     }
 
     /**
@@ -73,6 +81,7 @@ class PlayerController extends Controller
     {
         $player = Player::find($id);
         $teams = Team::select('id', 'name')->get();
+        $leagues = League::select('id', 'name')->get();
         return view('player.edit', compact('player', 'teams'));
     }
 

@@ -11,7 +11,7 @@
           {{ session()->get('message') }}
       </div>
     @endif
-    <a href="{{ route('league-form') }}" class="btn btn-primary">Add League</a>
+    <a href="{{ route('league-form') }}" class="btn btn-default">Add League</a>
       <table class="table table-striped table-bordered">
         <thead>
           <tr>

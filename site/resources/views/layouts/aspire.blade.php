@@ -171,6 +171,7 @@
 
     <!-- page js -->
     <script src="{{ asset('/js/aspire/dashboard/dashboard.js') }}"></script>
+    <script src="{{ asset('/js/page.js') }}"></script>
 
 </body>
 

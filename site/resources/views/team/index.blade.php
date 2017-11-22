@@ -5,13 +5,28 @@
 @section('content')
 <div class="container">
   <div class="row">
+    <div class="col-md-6">
+      <a href="team/form" class="btn btn-default">Add Team</a>
+    </div>
+    <div class="col-md-6">
+      <form action="/team/search" method="POST" role="search">
+          {{ csrf_field() }}
+          <div class="input-group">
+            <input type="text" class="form-control" name="q" placeholder="Search for..." style="height: 38px;" value="@if(isset($q)) {{ $q }} @endif">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="submit">Go!</button>
+            </span>
+          </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-sm">
     @if(session()->has('message'))
       <div class="alert alert-success">
           {{ session()->get('message') }}
       </div>
     @endif
-    <a href="team/form" class="btn btn-primary">Add Team</a>
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
@@ -43,6 +58,11 @@
         @endforeach
         </tbody>
       </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      {{ $teams->links('vendor.pagination.bootstrap-4') }}
     </div>
   </div>
 </div>

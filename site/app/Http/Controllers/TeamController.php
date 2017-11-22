@@ -16,7 +16,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = Team::with('leagues')->get();
+        $teams = Team::with('leagues')->paginate(5);
         return view('team.index',compact('teams'));
     }
 
@@ -111,7 +111,7 @@ class TeamController extends Controller
         ]);
         $team = Team::find($id);
         $team->name = $request->name;
-        $team->leage_id = $request->league_id;
+        $team->league_id = $request->league_id;
         $team->description = $request->description;
         $team->save();
         return redirect('team')->with('success','Team has been updated');

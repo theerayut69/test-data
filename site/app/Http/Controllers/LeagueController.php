@@ -16,7 +16,7 @@ class LeagueController extends Controller
     public function index()
     {
         $leagues = League::all();
-        return view('leagues.index',['leagues' => $leagues]);
+        return view('league.index',['leagues' => $leagues]);
     }
 
     /**
@@ -35,14 +35,14 @@ class LeagueController extends Controller
         $leagues->description = $request->description;
         $leagues->save();
 
-        return redirect('leagues')->witleague_idh('message', 'Create Success!');
+        return redirect('league')->with('message', 'Create Success!');
 
     }
 
 
     public function createForm()
     {
-        return view('leagues.create');
+        return view('league.create');
     }
 
     /**
@@ -81,7 +81,7 @@ class LeagueController extends Controller
 
         // echo "<pre>"; print_r($league);exit;
 
-        return view('leagues.edit', compact('league', 'id'));
+        return view('league.edit', compact('league', 'id'));
     }
 
     /**
@@ -101,7 +101,7 @@ class LeagueController extends Controller
         $leagues->name = $request->name;
         $leagues->description = $request->description;
         $leagues->save();
-        return redirect('leagues')->with('success','League has been updated');
+        return redirect('league')->with('success','League has been updated');
     }
 
     /**
@@ -114,6 +114,6 @@ class LeagueController extends Controller
     {
         $league = League::find($id);
         $league->delete();
-        return redirect('leagues')->with('message','League deleted successfully');
+        return redirect('league')->with('message','League deleted successfully');
     }
 }

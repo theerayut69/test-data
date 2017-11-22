@@ -19,13 +19,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Name</label>
-                                                <input type="text" class="form-control" name="name" placeholder="Enter your name" required="" minlength="8" aria-required="true">
+                                                <input type="text" class="form-control" name="name" placeholder="Enter your name" value="{{ old('name') }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Logo</label>
-                                                <input type="file" class="form-control" name="image"/>
+                                                <input type="file" class="form-control" name="image" value="{{ old('image') }}"/>
                                             </div>
                                         </div>
                                     </div>
@@ -33,7 +33,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <input type="text" class="form-control" name="description" placeholder="Enter your Description" required="" minlength="8" aria-required="true">
+                                                <input type="text" class="form-control" name="description" placeholder="Enter your Description" value="{{ old('description') }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -41,9 +41,9 @@
                                                 <label>League</label>
                                                 <select class="form-control" name="league_id">
                                                     @if($leagues)
-                                                    @foreach($leagues as $league)
-                                                    <option value="{{ $league->id }}">{{ $league->name }}</option>
-                                                    @endforeach
+                                                        @foreach($leagues as $league)
+                                                            <option value="{{ $league->id }}" @if(old('league_id') == $league->id) {{ 'selected' }} @endif>{{ $league->name }}</option>
+                                                        @endforeach
                                                     @else
                                                     <option value="">null</option>
                                                     @endif
@@ -51,6 +51,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @include('partials.formerrors')
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                     <button class="btn btn-default">Clear</button>
                                 </form>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\League;
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use DB;
 
 class LeagueController extends Controller
@@ -27,9 +26,13 @@ class LeagueController extends Controller
      */
     public function create(Request $request)
     {
+        $this->validate(request(), [
+            'name' => 'required',
+        //   'description' => 'required',
+        ]);
         $leagues = new League;
-        $leagues->name = $request->input('name');
-        $leagues->description = $request->input('description');
+        $leagues->name = $request->name;
+        $leagues->description = $request->description;
         $leagues->save();
 
         return redirect('leagues')->witleague_idh('message', 'Create Success!');
@@ -90,15 +93,13 @@ class LeagueController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        // echo "555"; exit;
+        $this->validate(request(), [
+            'name' => 'required',
+        //   'description' => 'required',
+        ]);
         $leagues = League::find($id);
-        // $this->validate(request(), [
-        //   'name' => 'required',
-        //   'description' => 'required|numeric'
-        // ]);
-        $leagues->name = $request->input('name');
-        $leagues->description = $request->input('description');
+        $leagues->name = $request->name;
+        $leagues->description = $request->description;
         $leagues->save();
         return redirect('leagues')->with('success','League has been updated');
     }

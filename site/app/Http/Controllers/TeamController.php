@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Team;
 use App\League;
 use File;
@@ -28,11 +27,15 @@ class TeamController extends Controller
      */
     public function create(Request $request)
     {
+        $this->validate(request(), [
+          'name' => 'required',
+        //   'description' => 'required',
+        ]);
         $team = new Team;
-        $team->league_id = $request->input('league_id');
-        $team->name = $request->input('name');
-        $team->logo = '';
-        $team->description = $request->input('description');
+        $team->league_id    = $request->league_id;
+        $team->name         = $request->name;
+        $team->logo         = '';
+        $team->description  = $request->description;
         $team->save();
 
         $imageName = $team->id . '.' . $request->file('image')->getClientOriginalExtension();
@@ -102,14 +105,14 @@ class TeamController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate(request(), [
+            'name' => 'required',
+            // 'description' => 'required',
+        ]);
         $team = Team::find($id);
-        // $this->validate(request(), [
-        //   'name' => 'required',
-        //   'description' => 'required|numeric'
-        // ]);
-        $team->name = $request->input('name');
-        $team->leage_id = $request->input('league_id');
-        $team->description = $request->input('description');
+        $team->name = $request->name;
+        $team->leage_id = $request->league_id;
+        $team->description = $request->description;
         $team->save();
         return redirect('team')->with('success','Team has been updated');
     }
@@ -126,4 +129,5 @@ class TeamController extends Controller
         $team->delete();
         return redirect('team')->with('message','League deleted successfully');
     }
+
 }

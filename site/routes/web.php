@@ -13,12 +13,7 @@
 use Illuminate\Support\Facades\Input;
 use App\Team;
 
-// Route::get('/', function () {
-//     return view('main');
-// });
-
-Route::get('/', 'MainController@get_league_default');
-Route::get('/main/{id}', 'MainController@get_league');
+Route::get('/', 'MainController@getLeagueDefault');
 Route::get('league', 'LeagueController@index');
 Route::get('league/create', 'LeagueController@createForm')->name('league-form');
 Route::post('league/create', 'LeagueController@create')->name('league-create');
@@ -47,24 +42,21 @@ Route::get('fixture/edit/{id}', 'FixtureController@edit');
 Route::get('fixture/delete/{id}', 'FixtureController@destroy');
 Route::patch('fixture/update/{id}', 'FixtureController@update');
 
-
-
-Route::get('/ajax-team', function(){
+Route::get('/ajax-team', function () {
     $league_id = Input::get('league_id');
-    $teams = Team::select('id','name')->where('league_id', '=', $league_id)->get();
-    // dd($teams);
+    $teams = Team::select('id', 'name')->where('league_id', $league_id)->get();
     return Response::json($teams);
 });
 
-Route::any( '/team/search', function () {
-    $q = Input::get ( 'q' );
-    if($q != ""){
+Route::any('/team/search', function () {
+    $q = Input::get('q');
+    if ($q != "") {
         $teams = Team::where('name', 'LIKE', '%' . $q . '%')->orWhere('description', 'LIKE', '%' . $q . '%')->paginate(5)->setPath('');
-        $pagination = $teams->appends (array(
-            'q' => Input::get ('q') 
+        $pagination = $teams->appends(array(
+            'q' => Input::get('q')
         ));
-        if (count ( $teams ) > 0){
-            return view ('team.index', compact('teams', 'q'))->withQuery($q);
+        if (count($teams) > 0) {
+            return view('team.index', compact('teams', 'q'))->withQuery($q);
         }
     }
     return redirect('team')->withMessage('No Details found. Try to search again !');

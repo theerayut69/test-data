@@ -17,13 +17,8 @@ class FixtureController extends Controller
      */
     public function index()
     {
-        // $fixtures = Fixture::all();
-        // return $fixtures;
-        // $fixtures = Fixture::with('teams')->get();
-        // $leagues = League::select('id', 'name')->get();
-        // $teams = Team::select('id', 'name')->get();
         $fixtures = DB::select('SELECT f.*, t_home.name AS home_team_name, t_away.name AS away_team_name, l.name AS league_name from fixtures AS f LEFT JOIN teams AS t_home ON f.home_team = t_home.id LEFT JOIN teams AS t_away ON f.away_team = t_away.id LEFT JOIN leagues AS l ON f.league_id = l.id');
-        return view('fixture.index',compact('fixtures'));
+        return view('fixture.index', compact('fixtures'));
     }
 
     /**
@@ -42,11 +37,8 @@ class FixtureController extends Controller
         $fixture->home_team = $request->home_team;
         $fixture->away_team = $request->away_team;
         $fixture->play_date = date('Y-m-d H:i:s', strtotime($request->play_date));
-
         $fixture->save();
-
         return redirect('fixture')->with('message', 'Create Success!');
-
     }
 
     public function createForm()
@@ -88,7 +80,6 @@ class FixtureController extends Controller
         $fixture = Fixture::find($id);
         $leagues = League::select('id', 'name')->get();
         $teams = Team::select('id', 'name')->where('league_id', '=', $fixture->league_id)->get();
-        // return strtotime($fixture->play_date);
         return view('fixture.edit', compact('fixture', 'leagues', 'teams'));
     }
 
@@ -106,7 +97,7 @@ class FixtureController extends Controller
         $fixture->away_team = $request->away_team;
         $fixture->play_date = date('Y-m-d H:i:s', strtotime($request->play_date));
         $fixture->save();
-        return redirect('fixture')->with('message','Fixture has been updated');
+        return redirect('fixture')->with('message', 'Fixture has been updated');
     }
 
     /**
@@ -119,7 +110,6 @@ class FixtureController extends Controller
     {
         $player = Fixture::find($id);
         $player->delete();
-        return redirect('fixture')->with('message','Fixture deleted successfully');
+        return redirect('fixture')->with('message', 'Fixture deleted successfully');
     }
-
 }

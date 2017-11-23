@@ -12,7 +12,8 @@ class Player extends Model
         'description',
     ];
 
-    public function teams(){
+    public function teams()
+    {
         return $this->belongsTo('App\Team', 'team_id');
     }
 }

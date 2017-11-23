@@ -17,7 +17,7 @@ class PlayerController extends Controller
     public function index()
     {
         $players = Player::with('teams')->get();
-        return view('player.index',compact('players'));
+        return view('player.index', compact('players'));
     }
 
     /**
@@ -29,24 +29,22 @@ class PlayerController extends Controller
     {
         $this->validate(request(), [
             'name' => 'required',
-            // 'team_id' => 'required',
+            // 'team_id' => 'required',yerController.php
+
         ]);
         $player = new Player;
-        $player->team_id = $request->input('team_id');
-        $player->name = $request->input('name');
-        $player->description = $request->input('description');
+        $player->team_id = $request->team_id;
+        $player->name = $request->name;
+        $player->description = $request->description;
         $player->save();
 
         return redirect('player')->with('message', 'Create Success!');
-
     }
 
     public function createForm()
     {
         $leagues = League::select('id', 'name')->get();
-        // dd($leagues->first()->id);
         $teams = Team::where('league_id', '=', $leagues->first()->id)->get();
-        // dd($teams);
         return view('player.create', compact('teams', 'leagues'));
     }
 
@@ -94,15 +92,11 @@ class PlayerController extends Controller
     public function update(Request $request, $id)
     {
         $player = Player::find($id);
-        // $this->validate(request(), [
-        //   'name' => 'required',
-        //   'description' => 'required|numeric'
-        // ]);
-        $player->name = $request->input('name');
-        $player->team_id = $request->input('team_id');
-        $player->description = $request->input('description');
+        $player->name = $request->name;
+        $player->team_id = $request->team_id;
+        $player->description = $request->description;
         $player->save();
-        return redirect('player')->with('message','Player has been updated');
+        return redirect('player')->with('message', 'Player has been updated');
     }
 
     /**
@@ -115,6 +109,6 @@ class PlayerController extends Controller
     {
         $player = Player::find($id);
         $player->delete();
-        return redirect('team')->with('message','Player deleted successfully');
+        return redirect('team')->with('message', 'Player deleted successfully');
     }
 }

@@ -15,7 +15,7 @@ class LeagueController extends Controller
     public function index()
     {
         $leagues = League::all();
-        return view('league.index',['leagues' => $leagues]);
+        return view('league.index', ['leagues' => $leagues]);
     }
 
     /**
@@ -35,7 +35,6 @@ class LeagueController extends Controller
         $leagues->save();
 
         return redirect('league')->with('message', 'Create Success!');
-
     }
 
 
@@ -100,7 +99,7 @@ class LeagueController extends Controller
         $leagues->name = $request->name;
         $leagues->description = $request->description;
         $leagues->save();
-        return redirect('league')->with('message','League has been updated');
+        return redirect('league')->with('message', 'League has been updated');
     }
 
     /**
@@ -113,6 +112,6 @@ class LeagueController extends Controller
     {
         $league = League::find($id);
         $league->delete();
-        return redirect('league')->with('message','League deleted successfully');
+        return redirect('league')->with('message', 'League deleted successfully');
     }
 }

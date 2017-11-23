@@ -42,6 +42,7 @@
     <link href="{{ asset('/css/aspire/themify-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/aspire/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/aspire/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="

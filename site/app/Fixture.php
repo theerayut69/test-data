@@ -14,7 +14,8 @@ class Fixture extends Model
         'play_date',
     ];
 
-    public function leagues(){
+    public function leagues()
+    {
         return $this->belongsTo('App\League', 'league_id');
     }
 
@@ -22,5 +23,4 @@ class Fixture extends Model
     {
         return $this->belongsToMany('App\Fixture', 'teams');
     }
-
 }

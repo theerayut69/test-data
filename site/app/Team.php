@@ -14,7 +14,8 @@ class Team extends Model
         'description',
     ];
 
-    public function leagues(){
+    public function leagues()
+    {
         return $this->belongsTo('App\League', 'league_id');
     }
 

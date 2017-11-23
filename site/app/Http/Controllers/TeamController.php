@@ -17,7 +17,7 @@ class TeamController extends Controller
     public function index()
     {
         $teams = Team::with('leagues')->paginate(5);
-        return view('team.index',compact('teams'));
+        return view('team.index', compact('teams'));
     }
 
     /**
@@ -42,21 +42,18 @@ class TeamController extends Controller
 
         $path = base_path() . '/public/images/teams/';
         File::isDirectory($path) or File::makeDirectory($path, 0777, true, true);
-        $request->file('image')->move(
-            $path, $imageName
-        );
+        $request->file('image')->move($path, $imageName);
 
         $team = Team::find($team->id);
         $team->logo = $imageName;
         $team->save();
 
         return redirect('team')->with('message', 'Create Success!');
-
     }
 
     public function createForm()
     {
-        $leagues = League::select('id','name')->get();
+        $leagues = League::select('id', 'name')->get();
         return view('team.create', compact('leagues'));
     }
 
@@ -91,7 +88,7 @@ class TeamController extends Controller
     public function edit($id)
     {
         $team = Team::where('id', $id)->first();
-        $leagues = League::select('id','name')->get();
+        $leagues = League::select('id', 'name')->get();
 
         return view('team.edit', compact('team', 'id', 'leagues'));
     }
@@ -114,7 +111,7 @@ class TeamController extends Controller
         $team->league_id = $request->league_id;
         $team->description = $request->description;
         $team->save();
-        return redirect('team')->with('message','Team has been updated');
+        return redirect('team')->with('message', 'Team has been updated');
     }
 
     /**
@@ -127,7 +124,6 @@ class TeamController extends Controller
     {
         $team = Team::find($id);
         $team->delete();
-        return redirect('team')->with('message','Team deleted successfully');
+        return redirect('team')->with('message', 'Team deleted successfully');
     }
-
 }

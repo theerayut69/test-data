@@ -17,7 +17,8 @@ use App\Team;
 //     return view('main');
 // });
 
-Route::get('/', 'LeagueController@index');
+Route::get('/', 'MainController@get_league_default');
+Route::get('/main/{id}', 'MainController@get_league');
 Route::get('league', 'LeagueController@index');
 Route::get('league/create', 'LeagueController@createForm')->name('league-form');
 Route::post('league/create', 'LeagueController@create')->name('league-create');

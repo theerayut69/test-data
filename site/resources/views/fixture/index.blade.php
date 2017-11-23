@@ -3,7 +3,7 @@
 @section('title', 'Fixture')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-6">
       <a href="fixture/form" class="btn btn-default">Add Fixture</a>
@@ -22,17 +22,20 @@
             <th scope="col">Date</th>
             <th scope="col">Home</th>
             <th scope="col">Away</th>
+            <th scope="col">League</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
         @foreach($fixtures as $fixture)
           <tr id="tr_{{$fixture->id}}">
-            <td>{{ date('d/m/Y H:i:s', $fixture->play_date) }}</td>
-            <td>{{ $fixture->home_team }}</td>
-            <td>{{ $fixture->away_team }}</td>
+            <td>{{ date('d/m/Y H:i:s', strtotime($fixture->play_date)) }}</td>
+            {{--  <td>{{ $fixture->play_date }}</td>  --}}
+            <td>{{ $fixture->home_team_name }}</td>
+            <td>{{ $fixture->away_team_name }}</td>
+            <td>{{ $fixture->league_name }}</td>
             <td>
-                <a class="btn btn-info" href="team/edit/{{ $fixture->id }}">Update</a>
+                <a class="btn btn-info" href="fixture/edit/{{ $fixture->id }}">Update</a>
                 <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{action('FixtureController@destroy', $fixture->id)}}">Delete</a>
             </td>
           </tr>

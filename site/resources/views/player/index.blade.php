@@ -3,7 +3,7 @@
 @section('title', 'Teams')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-sm">
     @if(session()->has('message'))

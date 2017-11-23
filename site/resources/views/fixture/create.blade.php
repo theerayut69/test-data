@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -65,12 +65,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <div class='input-group date' id='datetimepicker1'>
-                                                    <input type='text' class="form-control" />
+                                                    <input type='text' name="play_date" class="form-control" />
                                                     <span class="input-group-addon">
                                                         <span class="ti-calendar"></span>
                                                     </span>
                                                 </div>
                                             </div>
+                                            {{--  <label>Date of match</label>  --}}
+                                            {{--  <input type="datetime-local" class="form-control" name="play_date" />  --}}
                                         </div>
                                     </div>
                                     @include('partials.formerrors')

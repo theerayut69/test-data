@@ -114,7 +114,7 @@ class TeamController extends Controller
         $team->league_id = $request->league_id;
         $team->description = $request->description;
         $team->save();
-        return redirect('team')->with('success','Team has been updated');
+        return redirect('team')->with('message','Team has been updated');
     }
 
     /**
@@ -127,7 +127,7 @@ class TeamController extends Controller
     {
         $team = Team::find($id);
         $team->delete();
-        return redirect('team')->with('message','League deleted successfully');
+        return redirect('team')->with('message','Team deleted successfully');
     }
 
 }

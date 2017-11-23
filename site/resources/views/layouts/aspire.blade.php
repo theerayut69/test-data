@@ -42,6 +42,10 @@
     <link href="{{ asset('/css/aspire/themify-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/aspire/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/aspire/app.css') }}" rel="stylesheet">
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -53,8 +57,8 @@
                     <div class="side-nav-inner">
                         <div class="side-nav-logo">
                             <a href="index-2.html">
-                                <!-- <div class="logo logo-dark" style="background-image: url('assets/images/logo/logo.png')"></div>
-                                <div class="logo logo-white" style="background-image: url('assets/images/logo/logo-white.png')">Basketball</div> -->
+                                <div class="logo logo-dark" style="background-image: url('assets/images/logo/logo.png')"></div>
+                                <div class="logo logo-white" style="background-image: url('assets/images/logo/logo-white.png')">Basketball</div>
                             </a>
                             <div class="mobile-toggle side-nav-toggle">
                                 <a href="#">

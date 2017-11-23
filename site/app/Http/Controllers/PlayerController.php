@@ -102,7 +102,7 @@ class PlayerController extends Controller
         $player->team_id = $request->input('team_id');
         $player->description = $request->input('description');
         $player->save();
-        return redirect('player')->with('success','Player has been updated');
+        return redirect('player')->with('message','Player has been updated');
     }
 
     /**
@@ -115,6 +115,6 @@ class PlayerController extends Controller
     {
         $player = Player::find($id);
         $player->delete();
-        return redirect('team')->with('message','League deleted successfully');
+        return redirect('team')->with('message','Player deleted successfully');
     }
 }

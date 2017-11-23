@@ -100,7 +100,7 @@ class LeagueController extends Controller
         $leagues->name = $request->name;
         $leagues->description = $request->description;
         $leagues->save();
-        return redirect('league')->with('success','League has been updated');
+        return redirect('league')->with('message','League has been updated');
     }
 
     /**

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Fixture;
 use App\League;
 use App\Team;
+use DB;
 
 class FixtureController extends Controller
 {
@@ -16,10 +17,13 @@ class FixtureController extends Controller
      */
     public function index()
     {
-        $fixtures = Fixture::with('teams')->with('leagues')->get();
+        // $fixtures = Fixture::all();
+        // return $fixtures;
+        // $fixtures = Fixture::with('teams')->get();
         // $leagues = League::select('id', 'name')->get();
         // $teams = Team::select('id', 'name')->get();
-        return view('fixture.index',compact('fixtures', 'leagues', 'teams'));
+        $fixtures = DB::select('SELECT f.*, t_home.name AS home_team_name, t_away.name AS away_team_name, l.name AS league_name from fixtures AS f LEFT JOIN teams AS t_home ON f.home_team = t_home.id LEFT JOIN teams AS t_away ON f.away_team = t_away.id LEFT JOIN leagues AS l ON f.league_id = l.id');
+        return view('fixture.index',compact('fixtures'));
     }
 
     /**
@@ -30,16 +34,18 @@ class FixtureController extends Controller
     public function create(Request $request)
     {
         $this->validate(request(), [
-            'name' => 'required',
+            // 'play_time' => 'required',
             // 'team_id' => 'required',
         ]);
-        $player = new Player;
-        $player->team_id = $request->input('team_id');
-        $player->name = $request->input('name');
-        $player->description = $request->input('description');
-        $player->save();
+        $fixture = new Fixture;
+        $fixture->league_id = $request->league_id;
+        $fixture->home_team = $request->home_team;
+        $fixture->away_team = $request->away_team;
+        $fixture->play_date = date('Y-m-d H:i:s', strtotime($request->play_date));
 
-        return redirect('player')->with('message', 'Create Success!');
+        $fixture->save();
+
+        return redirect('fixture')->with('message', 'Create Success!');
 
     }
 
@@ -79,10 +85,11 @@ class FixtureController extends Controller
      */
     public function edit($id)
     {
-        $player = Player::find($id);
-        $teams = Team::select('id', 'name')->get();
+        $fixture = Fixture::find($id);
         $leagues = League::select('id', 'name')->get();
-        return view('player.edit', compact('player', 'teams'));
+        $teams = Team::select('id', 'name')->where('league_id', '=', $fixture->league_id)->get();
+        // return strtotime($fixture->play_date);
+        return view('fixture.edit', compact('fixture', 'leagues', 'teams'));
     }
 
     /**
@@ -93,16 +100,13 @@ class FixtureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $player = Player::find($id);
-        // $this->validate(request(), [
-        //   'name' => 'required',
-        //   'description' => 'required|numeric'
-        // ]);
-        $player->name = $request->input('name');
-        $player->team_id = $request->input('team_id');
-        $player->description = $request->input('description');
-        $player->save();
-        return redirect('player')->with('success','Player has been updated');
+        $fixture = Fixture::find($id);
+        $fixture->league_id = $request->league_id;
+        $fixture->home_team = $request->home_team;
+        $fixture->away_team = $request->away_team;
+        $fixture->play_date = date('Y-m-d H:i:s', strtotime($request->play_date));
+        $fixture->save();
+        return redirect('fixture')->with('message','Fixture has been updated');
     }
 
     /**
@@ -113,9 +117,9 @@ class FixtureController extends Controller
      */
     public function destroy($id)
     {
-        $player = Player::find($id);
+        $player = Fixture::find($id);
         $player->delete();
-        return redirect('team')->with('message','League deleted successfully');
+        return redirect('fixture')->with('message','Fixture deleted successfully');
     }
 
 }

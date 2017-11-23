@@ -3,7 +3,7 @@
 @section('title', 'Teams')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-6">
       <a href="team/form" class="btn btn-default">Add Team</a>

@@ -1,40 +1,3 @@
-/*---------------------------------------------------------------------------
-  Template: Espire - Angular Web App Admin Template
-  Author: Theme_Nate
-  Version: 1.0
-----------------------------------------------------------------------------*/
-/*---------------------------------
--------------- common -------------
----------------------------------*/
-/*----------------------------
---------- 1. General ---------
-----------------------------*/
-@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700|Roboto:300,400,500,700");
-html, html a, body { -webkit-font-smoothing: antialiased; }
-
-body { font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; font-size: 14px; background-color: #f6f7fb; color: #888da8; line-height: 1.5; letter-spacing: 0.2px; overflow-x: hidden; }
-
-h1, h2, h3, h4, h5, h6 { color: #515365; font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; letter-spacing: 0.5px; font-weight: normal; line-height: 1.5; }
-
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
-
-h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { font-weight: 300; color: #5c5f73; }
-
-h1 { font-size: 26px; }
-
-h2 { font-size: 22px; }
-
-h3 { font-size: 20px; }
-
-h4 { font-size: 18px; }
-
-h5 { font-size: 16px; }
-
-h6 { font-size: 12px; }
-
-p { font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: #888da8; line-height: 1.9; }
-
-.lead { font-size: 18px; }
 
 ul { margin-bottom: 0px; }
 
@@ -49,10 +12,6 @@ a.text-gray:hover, a.text-gray:focus, a.text-gray.active { color: #515365 !impor
 :focus { outline: none; }
 
 hr { border-top: 1px solid #e6ecf5; }
-
-.font-primary { font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
-
-.font-secondary { font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
 
 .text-link:hover, .text-link:focus { text-decoration: underline; }
 

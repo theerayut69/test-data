@@ -13,6 +13,8 @@
 use Illuminate\Support\Facades\Input;
 use App\Team;
 
+Route::get('boot', 'BootController@index');
+
 Route::get('/', 'MainController@getLeagueDefault');
 Route::get('league', 'LeagueController@index');
 Route::get('league/create', 'LeagueController@createForm')->name('league-form');

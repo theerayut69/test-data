@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+
+
+<!-- Mirrored from themenate.com/espire/html/dist/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Nov 2017 03:16:36 GMT -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
@@ -12,7 +15,7 @@
     <title>{{ config('app.name', 'Basketball') }}</title>
 
     <!-- Styles -->
-    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+    {{--  <link href="{{ mix('/css/app.css') }}" rel="stylesheet">  --}}
 
     <!-- Scripts -->
     <script>
@@ -20,6 +23,20 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+
+    <!-- plugins css -->
+    {{--  <link rel="stylesheet" href="http://themenate.com/espire/html/bower_components/bootstrap/dist/css/bootstrap.css" />  --}}
+
+    <!-- core css -->
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/aspire/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+    {{--  <link href="{{ asset('/css/aspire/ei-icon.css') }}" rel="stylesheet">  --}}
+    {{--  <link href="{{ asset('/css/aspire/animate.min.css') }}" rel="stylesheet">  --}}
+    <link href="{{ asset('/css/aspire/app.css') }}" rel="stylesheet">
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -31,8 +48,8 @@
                     <div class="side-nav-inner">
                         <div class="side-nav-logo">
                             <a href="index-2.html">
-                                {{--  <div class="logo logo-dark" style="background-image: url('assets/images/logo/logo.png')"></div>
-                                <div class="logo logo-white" style="background-image: url('assets/images/logo/logo-white.png')">Basketball</div>  --}}
+                                <div class="logo logo-dark" style="background-image: url('assets/images/logo/logo.png')"></div>
+                                <div class="logo logo-white" style="background-image: url('assets/images/logo/logo-white.png')">Basketball</div>
                             </a>
                             <div class="mobile-toggle side-nav-toggle">
                                 <a href="#">
@@ -137,7 +154,24 @@
         </div>
     </div>
     
+
+    {{--  <script src="{{ asset('/js/aspire/vendor.js') }}"></script>  --}}
+
+    <!-- page plugins js -->
+    {{--  <script src="http://themenate.com/espire/html/bower_components/bower-jvectormap/jquery-jvectormap-1.2.2.min.js"></script>  --}}
+    {{--  <script src="{{ asset('/js/aspire/maps/jquery-jvectormap-us-aea.js') }}"></script>  --}}
+    {{--  <script src="http://themenate.com/espire/html/bower_components/d3/d3.min.js"></script>  --}}
+    {{--  <script src="http://themenate.com/espire/html/bower_components/nvd3/build/nv.d3.min.js"></script>  --}}
+    {{--  <script src="http://themenate.com/espire/html/bower_components/jquery.sparkline/index.js"></script>  --}}
+    {{--  <script src="http://themenate.com/espire/html/bower_components/chart.js/dist/Chart.min.js"></script>  --}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script src="http://themenate.com/espire/html/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+
     <script src="{{ mix('/js/app.js') }}"></script>
+
+    <!-- page js -->
+    <script src="{{ asset('/js/aspire/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
+    
 
 </body>
 

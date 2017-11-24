@@ -42,7 +42,7 @@
           <tr id="tr_{{$team->id}}">
             <td>
             @if (file_exists(public_path('/images/teams/' . $team->logo)))
-              <img src="{{ asset('/images/teams/' . $team->logo ) }}" style="width: 50px; height: 50px;" />
+              <img src="{{ asset('/images/teams/' . $team->logo ) }}" class="" style="width: 50px; height: 50px;" />
             @else
                 <img src="https://dummyimage.com/50x50/bdbdbd/000000" style="width: 50px; height: 50px;" >
             @endif

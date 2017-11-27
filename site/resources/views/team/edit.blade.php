@@ -3,7 +3,17 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="row" style="margin-top: 50px;">
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/team">Team</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-heading border bottom">
@@ -58,7 +68,7 @@
                                     </div>
                                     @include('partials.formerrors')
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button class="btn btn-default">Clear</button>
+                                    <button type="reset" class="btn btn-default">Clear</button>
                                 </form>
                             </div>
                         </div>

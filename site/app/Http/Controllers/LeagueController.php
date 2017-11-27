@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\League;
+use App\Team;
 use Illuminate\Http\Request;
 
 class LeagueController extends Controller
@@ -26,7 +27,7 @@ class LeagueController extends Controller
     public function create(Request $request)
     {
         $this->validate(request(), [
-            'name' => 'required',
+            'name' => 'required|unique:leagues',
         //   'description' => 'required',
         ]);
         $leagues = new League;
@@ -62,7 +63,13 @@ class LeagueController extends Controller
      */
     public function show($id)
     {
-        //
+        $league = League::find($id);
+        $teams = Team::where('league_id', $id)->with('leagues')->paginate(5);
+        // dd($league);
+        return view('league.show', array(
+            'league' => $league,
+            'teams' => $teams,
+        ));
     }
 
     /**

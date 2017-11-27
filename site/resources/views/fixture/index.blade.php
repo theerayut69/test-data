@@ -31,8 +31,22 @@
           <tr id="tr_{{$fixture->id}}">
             <td>{{ date('d/m/Y H:i:s', strtotime($fixture->play_date)) }}</td>
             {{--  <td>{{ $fixture->play_date }}</td>  --}}
-            <td>{{ $fixture->home_team_name }}</td>
-            <td>{{ $fixture->away_team_name }}</td>
+            <td>
+            @if (file_exists(public_path('/images/teams/' . $fixture->home_team_logo)))
+                  <img src="{{ asset('/images/teams/' . $fixture->home_team_logo ) }}" style="width: 50px; height: 50px;" />
+              @else
+                  <img src="https://dummyimage.com/50x50/bdbdbd/000000" style="width: 50px; height: 50px;" >
+              @endif
+            {{ $fixture->home_team_name }}
+            </td>
+            <td>
+            @if (file_exists(public_path('/images/teams/' . $fixture->away_team_logo)))
+                  <img src="{{ asset('/images/teams/' . $fixture->away_team_logo ) }}" style="width: 50px; height: 50px;" />
+              @else
+                  <img src="https://dummyimage.com/50x50/bdbdbd/000000" style="width: 50px; height: 50px;" >
+              @endif
+            {{ $fixture->away_team_name }}
+            </td>
             <td>{{ $fixture->league_name }}</td>
             <td>
                 <a class="btn btn-info" href="fixture/edit/{{ $fixture->id }}">Update</a>
@@ -46,7 +60,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      {{--  {{ $fixtures->links('vendor.pagination.bootstrap-4') }}  --}}
+      {{ $fixtures->links('vendor.pagination.bootstrap-4') }}
     </div>
   </div>
 </div>

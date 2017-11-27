@@ -5,6 +5,16 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/fixture">Fixture</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-heading border bottom">
                     <h4 class="card-title">Player</h4>
@@ -78,7 +88,7 @@
                                     </div>
                                     @include('partials.formerrors')
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button class="btn btn-default">Clear</button>
+                                    <button type="reset" class="btn btn-default">Clear</button>
                                 </form>
                             </div>
                         </div>

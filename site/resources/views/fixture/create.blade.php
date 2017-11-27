@@ -13,7 +13,7 @@
                     <div class="card-block">
                         <div class="row">
                             <div class="col-md-8 ml-auto mr-auto">
-                                <form action="create" method="post" role="form" id="form-validation" novalidate="novalidate" enctype="multipart/form-data">
+                                <form action="create" method="post" role="form" id="form-fixture" novalidate="novalidate" enctype="multipart/form-data">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -77,7 +77,7 @@
                                     </div>
                                     @include('partials.formerrors')
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button class="btn btn-default">Clear</button>
+                                    <button type="reset" class="btn btn-default">Clear</button>
                                 </form>
                             </div>
                         </div>

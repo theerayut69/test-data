@@ -37,8 +37,22 @@
                                                 @foreach($fixtures[$league->id] as $fixture)
                                                 <tr id="tr_{{$fixture->id}}">
                                                     <td>{{ date('d/m/Y H:i:s', strtotime($fixture->play_date)) }}</td>
-                                                    <td>{{ $fixture->home_team_name }}</td>
-                                                    <td>{{ $fixture->away_team_name }}</td>
+                                                    <td>
+                                                    @if (file_exists(public_path('/images/teams/' . $fixture->home_team_logo)))
+                                                        <img src="{{ asset('/images/teams/' . $fixture->home_team_logo ) }}" style="width: 50px; height: 50px;" />
+                                                    @else
+                                                        <img src="https://dummyimage.com/50x50/bdbdbd/000000" style="width: 50px; height: 50px;" >
+                                                    @endif
+                                                    {{ $fixture->home_team_name }}
+                                                    </td>
+                                                    <td>
+                                                    @if (file_exists(public_path('/images/teams/' . $fixture->away_team_logo)))
+                                                        <img src="{{ asset('/images/teams/' . $fixture->away_team_logo ) }}" style="width: 50px; height: 50px;" />
+                                                    @else
+                                                        <img src="https://dummyimage.com/50x50/bdbdbd/000000" style="width: 50px; height: 50px;" >
+                                                    @endif
+                                                    {{ $fixture->away_team_name }}
+                                                    </td>
                                                 </tr>
                                                 @endforeach
                                                 </tbody>
@@ -67,7 +81,7 @@
                                                         <img src="https://dummyimage.com/50x50/bdbdbd/000000" style="width: 50px; height: 50px;" >
                                                     @endif
                                                     </td>
-                                                    <td>{{ $team->name }}</td>
+                                                    <td><a href="team/{{ $team->id }}/player">{{ $team->name }}</a></td>
                                                     <td>{{ $team->description }}</td>
                                                 </tr>
                                                 @endforeach

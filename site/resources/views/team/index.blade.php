@@ -12,7 +12,7 @@
       <form action="/team/search" method="POST" role="search">
           {{ csrf_field() }}
           <div class="input-group">
-            <input type="text" class="form-control" name="q" placeholder="Search for..." style="height: 38px;" value="@if(isset($q)) {{ $q }} @endif">
+            <input type="text" class="form-control" name="q" placeholder="Search for..." value="@if(isset($q)) {{ $q }} @endif">
             <span class="input-group-btn">
               <button class="btn btn-primary" type="submit">Go!</button>
             </span>
@@ -51,6 +51,7 @@
             <td>{{ $team->description }}</td>
             <td>{{ $team->leagues->name }}</td>
             <td>
+                <a class="btn btn-success" href="team/{{ $team->id }}/view">View</a>
                 <a class="btn btn-info" href="team/edit/{{ $team->id }}">Update</a>
                 <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{action('TeamController@destroy', $team->id)}}">Delete</a>
             </td>

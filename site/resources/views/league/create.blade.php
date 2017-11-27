@@ -19,19 +19,19 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Name</label>
-                                                <input type="text" class="form-control" name="name" placeholder="Enter your name" required="" minlength="8" aria-required="true">
+                                                <input type="text" class="form-control" name="name" placeholder="Enter your name" required="" value="{{ old('name') }}" minlength="8" aria-required="true">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <input type="email" class="form-control" name="description" placeholder="Enter a valid email format" required="" aria-required="true">
+                                                <input type="email" class="form-control" name="description" placeholder="Enter a valid email format" value="{{ old('description') }}" required="" aria-required="true">
                                             </div>
                                         </div>
                                     </div>
                                     @include('partials.formerrors')
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button class="btn btn-default">Clear</button>
+                                    <button class="btn btn-default" type="reset">Clear</button>
                                 </form>
                             </div>
                         </div>

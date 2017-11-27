@@ -61,7 +61,7 @@
                                     </div>
                                     @include('partials.formerrors')
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button class="btn btn-default">Clear</button>
+                                    <button type="reset" class="btn btn-default">Clear</button>
                                 </form>
                             </div>
                         </div>

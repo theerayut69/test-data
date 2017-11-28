@@ -82,9 +82,10 @@ class PlayerController extends Controller
     public function edit($id)
     {
         $player = Player::find($id);
-        $teams = Team::select('id', 'name')->get();
+        $player_league = Team::find($player->team_id);
+        $teams = Team::select('id', 'name')->where('league_id', $player_league->league_id)->get();
         $leagues = League::select('id', 'name')->get();
-        return view('player.edit', compact('player', 'teams'));
+        return view('player.edit', compact('player', 'teams', 'leagues', 'player_league'));
     }
 
     /**

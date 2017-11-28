@@ -36,15 +36,29 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <input type="text" class="form-control" name="description" placeholder="Enter your Description" value="{{ $player->description }}" required="" minlength="8" aria-required="true">
+                                                <textarea class="form-control" name="description" rows="5">{{ $player->description }}</textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label>League</label>
+                                                <select class="form-control" id="league_id" name="league_id">
+                                                    @if($leagues)
+                                                        @foreach($leagues as $league)
+                                                            <option value="{{ $league->id }}" @if($player_league->league_id == $league->id) selected @endif >{{ $league->name }}</option>
+                                                        @endforeach
+                                                    @else
+                                                        <option value="">null</option>
+                                                    @endif
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label>Team</label>
-                                                <select class="form-control" name="team_id">
+                                                <select class="form-control" id="team_id" name="team_id">
                                                     @if($teams)
                                                     @foreach($teams as $team)
                                                         @if($player->team_id == $team->id)

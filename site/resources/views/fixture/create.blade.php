@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-heading border bottom">
-                    <h4 class="card-title">Player</h4>
+                    <h4 class="card-title">Fixture</h4>
                 </div>
                 <div class="card-block">
                     <div class="card-block">
@@ -34,7 +34,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Team</label>
+                                                <label>Home</label>
                                                 <select class="form-control" id="home_team" name="home_team">
                                                     @if($teams)
                                                         @foreach($teams as $team)
@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Team</label>
+                                                <label>Away</label>
                                                 <select class="form-control" id="away_team" name="away_team">
                                                     @if($teams)
                                                         @foreach($teams as $team)
@@ -76,7 +76,7 @@
                                         </div>
                                     </div>
                                     @include('partials.formerrors')
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="button" id="formSubmit" class="btn btn-primary">Submit</button>
                                     <button type="reset" class="btn btn-default">Clear</button>
                                 </form>
                             </div>

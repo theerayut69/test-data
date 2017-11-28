@@ -30,17 +30,6 @@
                 <!-- Side Nav START -->
                 <div class="side-nav">
                     <div class="side-nav-inner">
-                        <div class="side-nav-logo">
-                            <a href="index-2.html">
-                                {{--  <div class="logo logo-dark" style="background-image: url('assets/images/logo/logo.png')"></div>
-                                <div class="logo logo-white" style="background-image: url('assets/images/logo/logo-white.png')">Basketball</div>  --}}
-                            </a>
-                            <div class="mobile-toggle side-nav-toggle">
-                                <a href="#">
-                                    <i class="ti-arrow-circle-left"></i>
-                                </a>
-                            </div>
-                        </div>
                         <ul class="side-nav-menu scrollable">
                             <li class="nav-item active">
                                 <a class="mrg-top-30" href="{{ url('/') }}">
@@ -144,14 +133,9 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script src="http://themenate.com/espire/html/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-    <script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
-    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/additional-methods.min.js"></script>
 
     <script src="{{ mix('/js/app.js') }}"></script>
     <script src="{{ asset('/js/aspire/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
-    
-    <!-- Laravel Javascript Validation -->
 
 </body>
 

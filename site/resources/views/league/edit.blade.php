@@ -36,7 +36,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <input type="email" class="form-control" name="description" value="{{ $league->description }}" placeholder="Enter a valid email format" required="" aria-required="true">
+                                                <textarea class="form-control" name="description" rows="5">{{ $league->description }}</textarea>
                                             </div>
                                         </div>
                                     </div>

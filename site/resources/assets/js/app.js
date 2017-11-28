@@ -29,81 +29,66 @@ $(function () {
         defaultDate: moment(),
         useCurrent: false
     });
+
 });
 
-$('#league_id').on('change', function(e){
-    var league_id = e.target.value;
-    $.get('/ajax-team?league_id=' + league_id, function(data){
-        $('#team_id').prop('disabled', false);
-        $('#team_id').empty();
-        $.each(data, function(index, teamObj){
-            $('#team_id').append('<option value="'+teamObj.id+'">'+teamObj.name+'</option>');
+! function($) {
+    "use strict";
+
+    function sideNavToggle() {
+        $(".side-nav-toggle").on("click", function(e) {
+            $(".app").toggleClass("is-collapsed"), e.preventDefault()
+        })
+    }
+
+    function submitForm() {
+        $('#formSubmit').on('click', function(){
+            var home_team = $('#home_team').val();
+            var away_team = $('#away_team').val();
+            if (home_team != away_team) {
+                $('#form-fixture').submit();
+            }else{
+                alert('Sorry, home team is not equal to away team.');
+            }
         });
-    });
-});
+    }
 
-$('#fixture_league_id').on('change', function(e){
-    console.log(e);
-    var league_id = e.target.value;
-    $.get('/ajax-fixture/' + league_id, function(data){
-        console.log(data);
-        $('#home_team').empty();
-        $('#away_team').empty();
-        $.each(data.homeTeams, function(index, team){
-            $('#home_team').append('<option value="'+team.id+'">'+team.name+'</option>');
+    function changeLeague() {
+        $('#league_id').on('change', function(e){
+            var league_id = e.target.value;
+            $.get('/ajax-team?league_id=' + league_id, function(data){
+                $('#team_id').prop('disabled', false);
+                $('#team_id').empty();
+                $.each(data, function(index, teamObj){
+                    $('#team_id').append('<option value="'+teamObj.id+'">'+teamObj.name+'</option>');
+                });
+            });
         });
-        $.each(data.awayTeams, function(index, team){
-            $('#away_team').append('<option value="'+team.id+'">'+team.name+'</option>');
+    }
+
+    function changeFixtureLeague() {
+        $('#fixture_league_id').on('change', function(e){
+            console.log(e);
+            var league_id = e.target.value;
+            $.get('/ajax-fixture/' + league_id, function(data){
+                console.log(data);
+                $('#home_team').empty();
+                $('#away_team').empty();
+                $.each(data.homeTeams, function(index, team){
+                    $('#home_team').append('<option value="'+team.id+'">'+team.name+'</option>');
+                });
+                $.each(data.awayTeams, function(index, team){
+                    $('#away_team').append('<option value="'+team.id+'">'+team.name+'</option>');
+                });
+            });
         });
-    });
-});
+    }
 
-// $('#home_team').on('change', function(e){
-//     var team_id = e.target.value;
-//         $.get('/ajax-change-home-team?team_id=' + team_id, function(data){
-//             console.log(data);
-//             $('#away_team').empty();
-//             $.each(data, function(index, team){
-//                 $('#away_team').append('<option value="'+team.id+'">'+team.name+'</option>');
-//             });
-//         });
-// });
-
-(function() {
-    'use strict';
-  
-    // window.addEventListener('load', function() {
-    //   var form = document.getElementById('form-fixture');
-    //   console.log(form.team);
-    //   return false;
-    //   form.addEventListener('submit', function(event) {
-    //       console.log(form);
-    //       return false;
-    //     if (form.checkValidity() === false) {
-    //       event.preventDefault();
-    //       event.stopPropagation();
-    //     }
-    //     form.classList.add('was-validated');
-    //   }, false);
-    // }, false);
-
-    $("#form-fixture").validate({
-        rules: {
-            home_team: { notEqual: true },
-            away_team: { notEqual: true },
-        },
-        // submitHandler: function(form) {
-        //   // some other code
-        //   // maybe disabling submit button
-        //   // then:
-        //   $(form).submit();
-        // }
-    });
-
-
-    jQuery.validator.addMethod("notEqual", function(value, element, param) {
-        return this.optional(element) || value != param;
-        return $('#home_team').val() != $('#away_team').val()
-    }, "Please specify a different (non-default) value");
-
-  })();
+    function init() {
+        sideNavToggle() ,
+        submitForm() ,
+        changeLeague() ,
+        changeFixtureLeague() 
+    }
+    init()
+}(jQuery);

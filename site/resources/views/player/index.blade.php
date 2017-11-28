@@ -15,10 +15,10 @@
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
-            <th scope="col">Player Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Team</th>
-            <th scope="col">Action</th>
+            <th width="15%" scope="col">Player Name</th>
+            <th width="40%" scope="col">Description</th>
+            <th width="15%" scope="col">Team</th>
+            <th width="30%" scope="col">Action</th>
           </tr>
         </thead>
         <tbody>

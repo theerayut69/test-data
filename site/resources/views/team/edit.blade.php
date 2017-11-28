@@ -44,7 +44,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <input type="text" class="form-control" name="description" placeholder="Enter your Description" value="{{ $team->description }}" required="" minlength="8" aria-required="true">
+                                                <textarea class="form-control" name="description" rows="5">{{ $team->description }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-6">

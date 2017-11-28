@@ -25,7 +25,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <input type="text" class="form-control" name="description" placeholder="Enter your Description" required="" minlength="8" aria-required="true">
+                                                <textarea class="form-control" name="description" rows="5">{{ old('description') }}</textarea>
                                             </div>
                                         </div>
                                     </div>

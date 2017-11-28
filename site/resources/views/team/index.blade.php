@@ -30,11 +30,11 @@
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
-            <th scope="col">Logo</th>
-            <th scope="col">Team Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">League</th>
-            <th scope="col">Action</th>
+            <th width="10%" scope="col">Logo</th>
+            <th width="15%" scope="col">Team Name</th>
+            <th width="35%" scope="col">Description</th>
+            <th width="15%" scope="col">League</th>
+            <th width="25%" scope="col">Action</th>
           </tr>
         </thead>
         <tbody>

@@ -14,7 +14,8 @@ class LogServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Fixture::observe(new \App\Observers\LogObserver);
+        // Fixture::observe(new \App\Observers\LogObserver);
+        view()->composer('*', 'App\Http\ViewComposers\LogComposer');
     }
 
     /**

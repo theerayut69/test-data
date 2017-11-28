@@ -71,6 +71,46 @@
                                     <span class="title">Fixture</span>
                                 </a>
                             </li>
+                            <li class="nav-item dropdown open">
+                                <a class="dropdown-toggle" href="javascript:void(0);">
+                                    <span class="icon-holder">
+                                        <i class="ti-package"></i>
+                                    </span>
+                                    <span class="title">All Teams</span>
+                                    <span class="arrow">
+                                        <i class="ti-angle-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                @if($menuLeagues)
+                                    @foreach($menuLeagues as $league)
+                                        <li class="nav-item dropdown open">
+                                            <a class="dropdown-toggle" href="javascript:void(0);">
+                                                <span class="icon-holder">
+                                                    <i class="ti-basketball"></i>
+                                                </span>
+                                                <span class="title">{{ $league->name }}</span>
+                                                <span class="arrow">
+                                                    <i class="ti-angle-right"></i>
+                                                </span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                @if($menuTeams)
+                                                    @foreach($menuTeams as $team)
+                                                        @if($league->id == $team->league_id)
+                                                            <li>
+                                                                <a href="{{ url('team/' . $team->id . '/view') }}">{{ $team->name }}</a>
+                                                            </li>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            </ul>
+                                        </li>
+                                    @endforeach
+                                @endif
+                                    
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>

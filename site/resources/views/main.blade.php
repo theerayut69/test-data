@@ -1,1 +1,1 @@
-@extends('layouts.aspire')
+@extends('layouts.clean')

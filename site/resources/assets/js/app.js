@@ -35,6 +35,16 @@ $(function () {
 ! function($) {
     "use strict";
 
+    function sideNav() {
+        $(".side-nav .side-nav-menu li a").on("click", function(e) {
+            $(this).parent().hasClass("open") ? $(this).parent().children(".dropdown-menu").slideUp(200, function() {
+                $(this).parent().removeClass("open")
+            }) : ($(this).parent().parent().children("li.open").children(".dropdown-menu").slideUp(200), $(this).parent().parent().children("li.open").children("a").removeClass("open"), $(this).parent().parent().children("li.open").removeClass("open"), $(this).parent().children(".dropdown-menu").slideDown(200, function() {
+                $(this).parent().addClass("open")
+            }))
+        })
+    }
+
     function sideNavToggle() {
         $(".side-nav-toggle").on("click", function(e) {
             $(".app").toggleClass("is-collapsed"), e.preventDefault()
@@ -85,6 +95,7 @@ $(function () {
     }
 
     function init() {
+        // sideNav() ,
         sideNavToggle() ,
         submitForm() ,
         changeLeague() ,

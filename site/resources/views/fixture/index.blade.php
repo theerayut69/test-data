@@ -1,4 +1,4 @@
-@extends('layouts.aspire')
+@extends('layouts.clean')
 
 @section('title', 'Fixture')
 

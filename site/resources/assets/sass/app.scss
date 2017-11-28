@@ -113,7 +113,7 @@ blockquote:before { font-family: 'themify'; content: "\e67f"; position: absolute
 .side-nav .side-nav-inner .side-nav-menu li a:hover, .side-nav .side-nav-inner .side-nav-menu li a:focus { text-decoration: none; color: #515365; }
 .side-nav .side-nav-inner .side-nav-menu li a:hover .icon-holder, .side-nav .side-nav-inner .side-nav-menu li a:focus .icon-holder { color: #0f9aee; }
 .side-nav .side-nav-inner .side-nav-menu > li.dropdown ul.dropdown-menu { position: relative; width: 100%; box-shadow: none; border: 0px; border-radius: 0; padding-left: 50px; padding-top: 0px; background-color: transparent; float: none; }
-.side-nav .side-nav-inner .side-nav-menu > li.dropdown ul.dropdown-menu > li > a { padding: 10px 15px; }
+.side-nav .side-nav-inner .side-nav-menu > li.dropdown ul.dropdown-menu > li > a { padding: 10px 15px; display: block; font-size: 14px; }
 .side-nav .side-nav-inner .side-nav-menu > li.dropdown ul.dropdown-menu > li > a:hover, .side-nav .side-nav-inner .side-nav-menu > li.dropdown ul.dropdown-menu > li > a:focus { background-color: transparent; color: #515365; }
 .side-nav .side-nav-inner .side-nav-menu > li.dropdown ul.dropdown-menu > li.active a { color: #515365; }
 .side-nav .side-nav-inner .side-nav-menu > li > a { position: relative; display: block; padding: 10px 15px; font-weight: 500; font-size: 15px; white-space: nowrap; }
@@ -197,6 +197,8 @@ blockquote:before { font-family: 'themify'; content: "\e67f"; position: absolute
 .header .header-container .nav-right .dropdown-menu > li { width: 100%; }
 .header .header-container .nav-right .dropdown-menu > li > a { line-height: 1.5; min-height: auto; padding: 10px 15px; }
 
+.dropdown-toggle:after { border: 0px; display: none; }
+
 .is-collapsed .header { width: calc(100% - 70px); }
 @media only screen and (max-width: 992px) { .is-collapsed .header { width: 100%; } }
 @media only screen and (min-width: 992px) and (max-width: 1440px) { .is-collapsed .header { width: calc(100% - 280px); } }
@@ -260,7 +262,7 @@ textarea.form-control { min-height: 75px; }
 
 .input-icon { position: relative; }
 .input-icon i { position: absolute; left: 10px; top: 15px; color: #e0e2e9; }
-.input-icon .form-control { padding-left: 40px; }
+.input-icon .form-control { padding-left: 40px; }.dropdown
 
 .input-group-addon { background-color: transparent; border: 1px solid #e6ecf5; color: #e0e2e9; }
 .input-group-addon .btn { margin: 0px; padding: 0px; background-color: transparent; }

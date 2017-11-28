@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('boot', 'BootController@index');
-
 Route::get('/', 'MainController@getLeagueDefault');
+
 Route::get('league', 'LeagueController@index');
 Route::get('league/create', 'LeagueController@createForm')->name('league-form');
 Route::post('league/create', 'LeagueController@create')->name('league-create');

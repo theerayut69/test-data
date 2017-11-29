@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Fixture;
 
 class LogServiceProvider extends ServiceProvider
 {
@@ -14,8 +13,7 @@ class LogServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Fixture::observe(new \App\Observers\LogObserver);
-        view()->composer('*', 'App\Http\ViewComposers\LogComposer');
+        
     }
 
     /**
@@ -25,6 +23,8 @@ class LogServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(Connection::class, function ($app) {
+            return new TrackLog();
+        });
     }
 }

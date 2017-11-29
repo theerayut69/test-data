@@ -47,11 +47,10 @@
                 <img src="https://dummyimage.com/50x50/bdbdbd/000000" style="width: 50px; height: 50px;" >
             @endif
             </td>
-            <td>{{ $team->name }}</td>
+            <td><a href="team/{{ $team->id }}/view">{{ $team->name }}</a></td>
             <td>{{ $team->description }}</td>
             <td>{{ $team->leagues->name }}</td>
             <td>
-                <a class="btn btn-success" href="team/{{ $team->id }}/view">View</a>
                 <a class="btn btn-info" href="team/edit/{{ $team->id }}">Update</a>
                 <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{action('TeamController@destroy', $team->id)}}">Delete</a>
             </td>

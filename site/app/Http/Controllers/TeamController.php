@@ -10,6 +10,7 @@ use App\League;
 use App\Player;
 use App\Fixture;
 use File;
+use App\TrackLog;
 
 class TeamController extends Controller
 {
@@ -18,9 +19,10 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(TrackLog $tracker)
     {
         $teams = Team::with('leagues')->paginate(5);
+        // $tracker->track('xxxxx');
         return view('team.index', compact('teams'));
     }
 
@@ -67,7 +69,7 @@ class TeamController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     *TrackLog
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -82,9 +84,10 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(TrackLog $tracker, $id)
     {
         $team = team::find($id);
+        // $tracker->track('<script>alert("showing")</script>');
         $players = Player::where('team_id', $id)->with('teams')->paginate(5);
         return view('team.show', array(
             'team' => $team,
@@ -124,7 +127,20 @@ class TeamController extends Controller
         $team->name = $request->name;
         $team->league_id = $request->league_id;
         $team->description = $request->description;
-    
+        iew()->composer(
+            [ 
+                'main.league', 
+                'fixture.index', 
+                'league.index', 
+                'league.show', 
+                'team.index', 
+                'team.show', 
+                'team.player', 
+                'player.index', 
+                'player.show' 
+            ],
+             'App\Http\ViewComposers\LogComposer'
+            );
         if($request->hasFile('image')){
             $imageName = $id . '.' . $request->file('image')->getClientOriginalExtension();
             $path = base_path() . '/public/images/teams/';

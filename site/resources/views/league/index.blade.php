@@ -23,10 +23,9 @@
         <tbody>
         @foreach($leagues as $league)
           <tr id="tr_{{$league->id}}">
-            <td>{{ $league->name }}</td>
+            <td><a href="league/{{ $league->id }}/view">{{ $league->name }}</a></td>
             <td>{{ $league->description }}</td>
             <td>
-                <a class="btn btn-success" href="league/{{ $league->id }}/view">View</a>
                 <a class="btn btn-info" href="{{ route('league-edit', $league->id) }}">Update</a>
                 <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{route('league-delete', $league->id)}}">Delete</a>
             </td>

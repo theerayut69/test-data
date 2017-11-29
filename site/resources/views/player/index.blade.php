@@ -24,11 +24,10 @@
         <tbody>
         @foreach($players as $player)
           <tr id="tr_{{$player->id}}">
-            <td>{{ $player->name }}</td>
+            <td><a href="player/{{ $player->id }}/view">{{ $player->name }}</a></td>
             <td>{{ $player->description }}</td>
             <td>{{ $player->teams->name }}</td>
             <td>
-                <a class="btn btn-success" href="player/{{ $player->id }}/view">View</a>
                 <a class="btn btn-info" href="player/edit/{{ $player->id }}">Update</a>
                 <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="{{action('PlayerController@destroy', $player->id)}}">Delete</a>
             </td>

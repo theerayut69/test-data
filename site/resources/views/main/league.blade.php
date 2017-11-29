@@ -28,9 +28,9 @@
                                             <table class="table table-striped table-bordered table-responsive-sm">
                                                 <thead>
                                                 <tr>
-                                                    <th scope="col">Date</th>
-                                                    <th scope="col">Home</th>
-                                                    <th scope="col">Away</th>
+                                                    <th width="20%" scope="col" class="text-center">Date</th>
+                                                    <th width="40%" scope="col" class="text-center">Home</th>
+                                                    <th width="40%" scope="col" class="text-center">Away</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -66,15 +66,15 @@
                                             <table class="table table-striped table-bordered table-responsive-sm">
                                                 <thead>
                                                 <tr>
-                                                    <th scope="col">Logo</th>
-                                                    <th scope="col">Team Name</th>
-                                                    <th scope="col">Description</th>
+                                                    <th width="10%" scope="col" class="text-center">Logo</th>
+                                                    <th width="20%" scope="col" class="text-center">Team Name</th>
+                                                    <th width="70%" scope="col" class="text-center">Description</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 @foreach($teams[$league->id] as $team)
                                                 <tr id="tr_{{$team->id}}">
-                                                    <td>
+                                                    <td class="text-center">
                                                     @if (file_exists(public_path('/images/teams/' . $team->logo)))
                                                         <img src="{{ asset('/images/teams/' . $team->logo ) }}" style="width: 50px; height: 50px;" />
                                                     @else

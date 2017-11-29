@@ -25,9 +25,9 @@
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
-            <th scope="col">Player Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Team</th>
+            <th width="20%" scope="col">Player Name</th>
+            <th width="60%" scope="col">Description</th>
+            <th width="20%" scope="col">Team</th>
           </tr>
         </thead>
         <tbody>
